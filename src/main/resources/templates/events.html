@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center my-4">Events</h1>
+
+  <a class="btn btn-primary btn-lg my-4" href="/events/create" role="button">Create an event</a>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>eventId</th>
+      <th>eventName</th>
+      <th>eventDate</th>
+      <th>eventTime</th>
+      <th>location</th>
+      <th>eventType</th>
+      <th>status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through the events and display them in the table -->
+    <tr th:each="event : ${events}">
+      <td th:text="${event.eventId}"></td>
+      <td th:text="${event.eventName}"></td>
+      <td th:text="${event.eventDate}"></td>
+      <td th:text="${event.eventTime}"></td>
+      <td th:text="${event.location}"></td>
+      <td th:text="${event.eventType}"></td>
+      <td th:text="${event.status}"></td>
+      <td>
+        <a class="btn btn-warning" th:href="@{/events/edit/{id}(id=${event.eventId})}">Edit</a>
+        <a class="btn btn-danger" th:href="@{/events/delete/{id}(id=${event.eventId})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
